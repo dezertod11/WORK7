@@ -49,6 +49,22 @@ double Square::square() {
     return s;
 };
 
+double Triangle::square() {
+    double s{1};
+    double p{perimeter()/2};
+    s *= p;
+    for (int i = 0; i < vertices.size(); ++i) {
+        if (i == vertices.size() - 1) {
+            s *= ( p - std::sqrt(  (vertices[i].getX() - vertices[0].getX())*(vertices[i].getX() - vertices[0].getX()) + (vertices[i].getY() - vertices[0].getY())*(vertices[i].getY() - vertices[0].getY()) ));
+        }
+        else {
+            s *= ( p - std::sqrt(  (vertices[i].getX() - vertices[i+1].getX())*(vertices[i].getX() - vertices[i+1].getX()) + (vertices[i].getY() - vertices[i+1].getY())*(vertices[i].getY() - vertices[i+1].getY()) ));
+        }
+    }
+    return std::sqrt(s);
+}
+
+
 //double Ellipse::square() {
 //    double s{1};
 //    s *= pi*_a*_b;

@@ -66,18 +66,25 @@ public:
     virtual ~Square() = default;
 };
 
+class Triangle: public Polygon {
+public:
+    Triangle(std::string type = "Triangle0"): Polygon(type) {};
+    virtual double square() override;
+    virtual ~Triangle() = default;
+};
+
 //class Ellipse: public Figure {
 //protected:
 //    Point _centre;
 //    double _a;
 //    double _b;
 //public:
-//    Ellipse(std::string type = "Ellipse0", Point centre, double a, double b): Figure(type), _centre(centre), _a(a), _b(b) {};
+//    Ellipse(std::string type = "Ellipse0", Point centre = Point(0,0), double a = 1, double b = 1): Figure(type), _centre(centre), _a(a), _b(b) {};
 //    virtual double perimeter();
 //    virtual double square();
 //    virtual void print();
 //    virtual ~Ellipse() = default;
-//    const double pi{3,14};
+//    const double pi{3.14};
 //};
 
 #endif //PROJECT7_FIGURE_H
