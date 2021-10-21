@@ -48,6 +48,33 @@ int main() {
     trig.setVertices(points);
     trig.print();
 
+    class Ellipse ellip("Ellipse1");
+    std::cout << "Введите координаты цетра эллипса:" << std::endl;
+    std::cout << " x:";
+    std::cin >> tmpx;
+    std::cout << " y:";
+    std::cin >> tmpy;
+    double a, b;
+    std::cout << "Введите длину и ширину эллипса:" << std::endl;
+    std::cout << " a = ";
+    std::cin >> a;
+    std::cout << " b = ";
+    std::cin >> b;
+    ellip.setCab(Point(tmpx,tmpy), a, b);
+    ellip.print();
+
+    class Circle cir("Circle1");
+    std::cout << "Введите координаты цетра круга:" << std::endl;
+    std::cout << " x:";
+    std::cin >> tmpx;
+    std::cout << " y:";
+    std::cin >> tmpy;
+    double r;
+    std::cout << "Введите радиус:" << std::endl;
+    std::cout << " r = ";
+    std::cin >> r;
+    cir.setCr(Point(tmpx,tmpy), r);
+    cir.print();
     return 0;
 }
 

@@ -65,14 +65,34 @@ double Triangle::square() {
 }
 
 
-//double Ellipse::square() {
-//    double s{1};
-//    s *= pi*_a*_b;
-//    return s;
-//}
-//void Ellipse::print() {
-//    std::cout << _type << ":"<< std::endl;
-//    std::cout << "Цетр:";
-//    _centre.printPoint();
-//    std::cout << "Периметр = " << perimeter() << std::endl;
-//    std::cout << "Площадь = " << square() << std::endl;
+double Ellipse::square() {
+    double s{1};
+    s *= pi*_a*_b;
+    return s;
+}
+void Ellipse::print() {
+    std::cout << _type << ":" << std::endl;
+    std::cout << "Цетр:";
+    _centre.printPoint();
+    std::cout << "Периметр = " << perimeter() << std::endl;
+    std::cout << "Площадь = " << square() << std::endl;
+}
+void Ellipse::setCab(Point centre, double a, double b) {
+    _centre = centre;
+    _a = a;
+    _b = b;
+}
+double Ellipse::perimeter() {
+    return (4 * (pi*_a*_b + (_a - _b)*(_a - _b))/(_a + _b));
+}
+
+double Circle::perimeter() {
+    return 2*pi*_r;
+};
+double Circle::square() {
+    return pi*_r*_r;
+};
+void Circle::setCr(Point centre, double r) {
+    _centre = centre;
+    _r = r;
+};

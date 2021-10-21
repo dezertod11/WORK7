@@ -73,18 +73,29 @@ public:
     virtual ~Triangle() = default;
 };
 
-//class Ellipse: public Figure {
-//protected:
-//    Point _centre;
-//    double _a;
-//    double _b;
-//public:
-//    Ellipse(std::string type = "Ellipse0", Point centre = Point(0,0), double a = 1, double b = 1): Figure(type), _centre(centre), _a(a), _b(b) {};
-//    virtual double perimeter();
-//    virtual double square();
-//    virtual void print();
-//    virtual ~Ellipse() = default;
-//    const double pi{3.14};
-//};
+class Ellipse: public Figure {
+protected:
+    Point _centre;
+    double _a;
+    double _b;
+public:
+    Ellipse(std::string type = "Ellipse0"): Figure(type) {};
+    virtual double perimeter();
+    virtual double square();
+    virtual void print();
+    virtual void setCab(Point centre, double a, double b);
+    virtual ~Ellipse() = default;
+    const double pi{3.14};
+};
 
+class Circle: public Ellipse {
+protected:
+    double _r;
+public:
+Circle(std::string type = "Circle0"): Ellipse(type) {};
+virtual double perimeter();
+virtual double square();
+virtual void setCr(Point centre, double r);
+virtual ~Circle() = default;
+};
 #endif //PROJECT7_FIGURE_H
