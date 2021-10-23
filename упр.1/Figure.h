@@ -16,8 +16,8 @@ public:
     Point(double x = 0.0, double y = 0.0): _x(x),_y(y) {};
     ~Point() = default;
 
-    int getX() { return _x; }
-    int getY() { return _y; }
+    int getX() const { return _x; }
+    int getY() const { return _y; }
     void printPoint() {
         std::cout << "(" << _x << ";" << _y << ")" << std::endl;
     }
@@ -34,8 +34,8 @@ protected:
     std::string _type;
 public:
     Figure(std::string type = "Figure0"): _type(type) {};
-    virtual double perimeter();
-    virtual double square();
+    virtual double perimeter() const = 0;
+    virtual double square() const = 0;
     virtual void print();
     virtual ~Figure() = default;
 };
@@ -45,8 +45,7 @@ protected:
     std::vector<Point> vertices;
 public:
     Polygon(std::string type = "Polygon0"): Figure(type) {};
-    virtual double perimeter() override;
-    virtual double square() override;
+    virtual double perimeter() const override;
     virtual void print() override;
     virtual ~Polygon() = default;
     virtual void setVertices(std::vector<Point>);
@@ -55,21 +54,21 @@ public:
 class Rectangle: public Polygon {
 public:
     Rectangle(std::string type = "Rectangle0"): Polygon(type) {};
-    virtual double square() override;
+    virtual double square() const override;
     virtual ~Rectangle() = default;
 };
 
 class Square: public Rectangle {
 public:
     Square(std::string type = "Square0"): Rectangle(type) {};
-    virtual double square() override;
+    virtual double square() const override;
     virtual ~Square() = default;
 };
 
 class Triangle: public Polygon {
 public:
     Triangle(std::string type = "Triangle0"): Polygon(type) {};
-    virtual double square() override;
+    virtual double square() const override;
     virtual ~Triangle() = default;
 };
 
@@ -80,8 +79,8 @@ protected:
     double _b;
 public:
     Ellipse(std::string type = "Ellipse0"): Figure(type) {};
-    virtual double perimeter();
-    virtual double square();
+    virtual double perimeter() const;
+    virtual double square() const;
     virtual void print();
     virtual void setCab(Point centre, double a, double b);
     virtual ~Ellipse() = default;
@@ -93,8 +92,8 @@ protected:
     double _r;
 public:
 Circle(std::string type = "Circle0"): Ellipse(type) {};
-virtual double perimeter();
-virtual double square();
+virtual double perimeter() const;
+virtual double square() const;
 virtual void setCr(Point centre, double r);
 virtual ~Circle() = default;
 };

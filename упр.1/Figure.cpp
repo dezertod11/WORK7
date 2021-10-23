@@ -1,12 +1,10 @@
 #include "Figure.h"
 
 
-double Figure::perimeter() { return 0.0; };
-double Figure::square() { return 0.0; };
 void Figure::print() { std::cout << _type << std::endl; };
 
 
-double Polygon::perimeter() {
+double Polygon::perimeter() const{
     double p = 0;
     for (int i = 0; i < vertices.size(); ++i) {
         if (i == vertices.size() - 1) {
@@ -18,7 +16,7 @@ double Polygon::perimeter() {
     }
     return p;
 };
-double Polygon::square() { return 0; };
+
 void Polygon::print() {
     std::cout << _type << ":"<< std::endl;
     std::cout << "Вершины:"<< std::endl;
@@ -34,7 +32,7 @@ void Polygon::setVertices(std::vector<Point> points) {
     }
 }
 
-double Rectangle::square() {
+double Rectangle::square() const {
     double s = 1;
     for (int i = 0; i < 2; ++i) {
         s *= std::sqrt(  (vertices[i].getX() - vertices[i+1].getX())*(vertices[i].getX() - vertices[i+1].getX()) + (vertices[i].getY() - vertices[i+1].getY())*(vertices[i].getY() - vertices[i+1].getY()) );
@@ -42,14 +40,14 @@ double Rectangle::square() {
     return s;
 };
 
-double Square::square() {
+double Square::square() const {
     double s{1};
     s *= std::sqrt(  (vertices[0].getX() - vertices[1].getX())*(vertices[0].getX() - vertices[1].getX()) + (vertices[0].getY() - vertices[1].getY())*(vertices[0].getY() - vertices[1].getY()) );
     s *=s;
     return s;
 };
 
-double Triangle::square() {
+double Triangle::square() const {
     double s{1};
     double p{perimeter()/2};
     s *= p;
@@ -65,7 +63,7 @@ double Triangle::square() {
 }
 
 
-double Ellipse::square() {
+double Ellipse::square() const {
     double s{1};
     s *= pi*_a*_b;
     return s;
@@ -82,14 +80,14 @@ void Ellipse::setCab(Point centre, double a, double b) {
     _a = a;
     _b = b;
 }
-double Ellipse::perimeter() {
+double Ellipse::perimeter() const {
     return (4 * (pi*_a*_b + (_a - _b)*(_a - _b))/(_a + _b));
 }
 
-double Circle::perimeter() {
+double Circle::perimeter() const {
     return 2*pi*_r;
 };
-double Circle::square() {
+double Circle::square() const {
     return pi*_r*_r;
 };
 void Circle::setCr(Point centre, double r) {
